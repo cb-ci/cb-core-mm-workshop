@@ -1,4 +1,4 @@
-FROM cloudbees/cloudbees-core-mm:latest
+FROM cloudbees/cloudbees-core-mm:2.222.1.1-alpine
 
 #FROM cloudbees/cloudbees-core-mm:2.235.2.3-alpine
 
@@ -24,7 +24,6 @@ COPY jenkins-support /usr/local/bin/jenkins-support
 
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
-
 RUN bash /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
 COPY jenkins.sh /usr/share/jenkins/ref
