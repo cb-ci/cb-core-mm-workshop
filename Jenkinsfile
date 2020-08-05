@@ -16,9 +16,6 @@ pipeline {
     }
     stages{
         stage("Docker") {
-            when {
-                branch 'master'
-            }
             agent {
                 kubernetes {
                     label 'dockerKaniko'
