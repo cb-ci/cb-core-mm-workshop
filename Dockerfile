@@ -1,6 +1,6 @@
-FROM cloudbees/cloudbees-core-mm:2.222.1.1-alpine
+FROM cloudbees/cloudbees-core-mm:2.235.2.3-alpine
 
-LABEL maintainer "kmadel@cloudbees.com"
+LABEL maintainer "acaternberg@cloudbees.com"
 
 #skip setup wizard and disable CLI
 ENV JVM_OPTS -Djenkins.CLI.disabled=true -server

@@ -1,2 +1,3 @@
 pipeline-event-step:1.7
 managed-master-hibernation:0.3-alpha
+beer:1.1
