@@ -30,7 +30,6 @@ pipeline {
                 sh "echo docker build"
                 container(name: 'kaniko', shell: '/busybox/sh') {
                     sh 'ls -lR'
-                    unstash 'app'
                     withEnv(['PATH+EXTRA=/busybox:/kaniko']) {
                         sh '''#!/busybox/sh
               /kaniko/executor  --dockerfile $(pwd)/Dockerfile --insecure --skip-tls-verify --cache=false  --context $(pwd) --destination caternberg/cloudbees-mm:BUILD_NUMBER-${BUILD_NUMBER}
