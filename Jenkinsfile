@@ -14,7 +14,6 @@ pipeline {
         //https://www.jenkins.io/doc/book/pipeline/scaling-pipeline/
         durabilityHint('PERFORMANCE_OPTIMIZED')
     }
-    agent none
     stages{
         stage("Docker") {
             when {
