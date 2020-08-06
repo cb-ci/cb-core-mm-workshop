@@ -29,7 +29,7 @@ pipeline {
                     sh 'ls -lR'
                     withEnv(['PATH+EXTRA=/busybox:/kaniko']) {
                         sh '''#!/busybox/sh
-              /kaniko/executor  --dockerfile $(pwd)/Dockerfile --insecure --skip-tls-verify --cache=false  --context $(pwd) --destination caternberg/cloudbees-mm:BUILD_NUMBER-${BUILD_NUMBER}
+              /kaniko/executor  --dockerfile $(pwd)/Dockerfile --insecure --skip-tls-verify --cache=false  --context $(pwd) --destination caternberg/cloudbees-mm:latest
           '''
                     }
                 }
