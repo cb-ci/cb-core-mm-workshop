@@ -4,7 +4,7 @@ LABEL maintainer "acaternberg@cloudbees.com"
 
 #skip setup wizard and disable CLI
 ENV JVM_OPTS -Djenkins.CLI.disabled=true -server
-ENV TZ="/usr/share/zoneinfo/America/New_York"
+ENV TZ="/usr/share/zoneinfo/Europe/Berlin"
 
 RUN mkdir -p /usr/share/jenkins/ref/license-activated-or-renewed-after-expiration.groovy.d
 
@@ -26,7 +26,7 @@ RUN bash /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
 COPY jenkins.sh /usr/share/jenkins/ref
 COPY launch.sh /usr/share/jenkins/ref
-
+#ADD https://raw.githubusercontent.com/cb-ci/casc/master/master3/jenkins.yaml?token=AB5NBRWR3IK77JPQ3TT2QWK7GPSK6
 USER root
 RUN chmod +x /usr/share/jenkins/ref/launch.sh /usr/share/jenkins/ref/jenkins.sh
 USER 1000
