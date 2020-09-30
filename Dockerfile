@@ -1,4 +1,4 @@
-FROM cloudbees/cloudbees-core-mm:2.222.1.1-alpine
+FROM cloudbees/cloudbees-core-mm:latest
 
 #FROM cloudbees/cloudbees-core-mm:2.235.2.3-alpine
 
