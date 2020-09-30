@@ -2,7 +2,13 @@ library '_github_com_pipeline-templates-apps_pipeline-library' _
 def kanikoPod = libraryResource 'podtemplates/podTemplate-kaniko.yaml'
 pipeline {
     //When applied at the top-level of the pipeline block no global agent will be allocated for the entire Pipeline run and each stage section will need to contain its own agent section. For example: agent none
-    agent none
+     agent {
+                kubernetes {
+                    label 'dockerKaniko'
+                    defaultContainer "kaniko"
+                    yaml kanikoPod
+                }
+            }
     // agent any
     options {
         //https://plugins.jenkins.io/timestamper/
@@ -16,27 +22,14 @@ pipeline {
     }
     stages{
         stage("Docker") {
-            when {
-                branch 'master'
-            }
-            agent {
-                kubernetes {
-                    label 'dockerKaniko'
-                    defaultContainer "kaniko"
-                    yaml kanikoPod
-                }
-            }
-            options {
-                skipDefaultCheckout(true)
-            }
+          
             steps {
                 sh "echo docker build"
                 container(name: 'kaniko', shell: '/busybox/sh') {
                     sh 'ls -lR'
-                    unstash 'app'
                     withEnv(['PATH+EXTRA=/busybox:/kaniko']) {
                         sh '''#!/busybox/sh
-              /kaniko/executor  --dockerfile $(pwd)/Dockerfile --insecure --skip-tls-verify --cache=false  --context $(pwd) --destination caternberg/cloudbees-mm:BUILD_NUMBER-${BUILD_NUMBER}
+              /kaniko/executor  --dockerfile $(pwd)/Dockerfile --insecure --skip-tls-verify --cache=false  --context $(pwd) --destination caternberg/cloudbees-mm:latest
           '''
                     }
                 }
