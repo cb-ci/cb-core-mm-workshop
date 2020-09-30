@@ -117,7 +117,9 @@ checkIntegrity() {
     local plugin jpi
     plugin="$1"
     jpi="$(getArchiveFilename "$plugin")"
-
+    echo "PLUGIN:$plugin"
+    echo $jpi
+    ls -l $jpi
     unzip -t -qq "$jpi" >/dev/null
     return $?
 }
