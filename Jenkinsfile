@@ -1,4 +1,4 @@
-library '_github_com_pipeline-templates-apps_pipeline-library' _
+library '_github.com_pipeline-demo-caternberg_pipeline_examples' _
 def kanikoPod = libraryResource 'podtemplates/podTemplate-kaniko.yaml'
 pipeline {
     //When applied at the top-level of the pipeline block no global agent will be allocated for the entire Pipeline run and each stage section will need to contain its own agent section. For example: agent none
